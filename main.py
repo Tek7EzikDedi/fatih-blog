@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import requests
 import smtplib
 import os
-import math
+
 app = Flask(__name__)
 
 api_endpoint = os.environ["api_endpoint"]
