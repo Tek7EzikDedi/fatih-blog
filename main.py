@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 import requests
 import smtplib
+import os
 
 app = Flask(__name__)
 
-api_endpoint = "https://api.npoint.io/2d43712bd7650e2ab964"
+api_endpoint = os.environ["api_endpoint"]
 
 response = requests.get(api_endpoint)
 data = response.json()
@@ -12,7 +13,7 @@ data = response.json()
 
 def send_mail(name, email, phone, message):
     e_mail = "fatihharsx4@gmail.com"
-    password = "sslylnpfmbachyjm"
+    password = os.environ["password"]
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(user=e_mail, password=password)
